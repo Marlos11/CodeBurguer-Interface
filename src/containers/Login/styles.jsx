@@ -26,6 +26,11 @@ display: flex;
 justify-content: center;
 flex-direction: column;
 
+form{
+    display: flex;
+    flex-direction: column;
+}
+
 h1{
     font-style: normal;
     font-weight: 500;
@@ -38,7 +43,16 @@ h1{
 
 
 `
+export const ErrorsMessage = styled.p`
 
+color: #CC1717;
+font-family: Roboto;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-top: 3px;
+`
 export const Label = styled.p`
 
 font-style: normal;
@@ -57,7 +71,7 @@ height: 38px;
 background: #ffffff;
 box-shadow: 3px 3px 10px rgba(74,144,266,0.19);
 border-radius: 5px;
-border: none;
+border: ${props => (props.error ? '2px solid #cc1717' : 'none')} ;
 padding-left: 10px;
 `
 
