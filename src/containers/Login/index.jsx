@@ -2,6 +2,7 @@
 import React from "react";
 import { useForm, } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import api from '../../services/api'
 import * as Yup from 'yup'
 import LoginImg from '../../assets/img-login.svg'
 import LogoImg from '../../assets/logo.svg'
@@ -12,7 +13,7 @@ import {
     Conteiner,
     ConteinerItens,
     Input,
-    SingInLink, 
+    SingInLink,
     Label,
     ErrorsMessage
 } from "./styles";
@@ -20,18 +21,25 @@ import {
 
 
 function Login() {
-const schema = Yup.object().shape({
-    email:Yup.string().email('email invalido').required('Obrigatorio preencher o campo email '),
-    password:Yup.string().required('Obrigatorio preencher o campo de senha ').min(6, 'a senha deve conter no minimo 6 digitos' )
-})
+    const schema = Yup.object().shape({
+        email: Yup.string().email('email invalido').required('Obrigatorio preencher o campo email '),
+        password: Yup.string().required('Obrigatorio preencher o campo de senha ').min(6, 'a senha deve conter no minimo 6 digitos')
+    })
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm({
-        resolver:yupResolver(schema)
+        resolver: yupResolver(schema)
     })
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = async clientData => {
+        const response = await api.post('sessions', {
+            email: clientData.email,
+            password: clientData.password
+        })
+        
+        console.log(response)
+    }
 
     return (
         <Conteiner>
