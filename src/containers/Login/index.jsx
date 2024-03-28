@@ -2,6 +2,7 @@
 import React from "react";
 import { useForm, } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { toast } from 'react-toastify'
 import api from '../../services/api'
 import * as Yup from 'yup'
 import LoginImg from '../../assets/img-login.svg'
@@ -34,12 +35,25 @@ function Login() {
         resolver: yupResolver(schema)
     })
     const onSubmit = async clientData => {
-        const response = await api.post('sessions', {
-            email: clientData.email,
-            password: clientData.password
-        })
+        const response = await toast.promise(
 
-      
+            api.post('sessions', {
+                email: clientData.email,
+                password: clientData.password
+            }),
+
+            {
+                pending: 'Verificando informações',
+                success: 'Seja Bem Vindo(a)! ',
+                error: 'Verifique suas informações'
+              }
+
+        )
+
+
+
+
+        console.log(response)
     }
 
     return (
@@ -58,7 +72,7 @@ function Login() {
                     <Input type="password" {...register("password")} error={errors.password?.message} />
                     <ErrorsMessage>{errors.password?.message}</ErrorsMessage>
 
-                    <Button type="submit" style={{ marginTop:75, marginBottom:25 }}>SingIn</Button>
+                    <Button type="submit" style={{ marginTop: 75, marginBottom: 25 }}>SingIn</Button>
 
                 </form>
                 <SingInLink>

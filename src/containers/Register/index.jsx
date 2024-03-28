@@ -2,6 +2,7 @@
 import React from "react";
 import { useForm, } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { toast } from 'react-toastify'
 import api from '../../services/api'
 import * as Yup from 'yup'
 import RegisterImg from '../../assets/8 1.svg'
@@ -29,9 +30,9 @@ function Register() {
         password: Yup.string().
             required('Obrigatorio preencher o campo de senha').
             min(6, 'a senha deve conter no minimo 6 digitos'),
-            confirmPassword: Yup.string()
-        .required('A senha é obrigatória')
-        .oneOf([Yup.ref('password')],'As senha não corresponde')
+        confirmPassword: Yup.string()
+            .required('A senha é obrigatória')
+            .oneOf([Yup.ref('password')], 'As senha não corresponde')
 
     })
     const {
@@ -42,13 +43,28 @@ function Register() {
         resolver: yupResolver(schema)
     })
     const onSubmit = async clientData => {
-        const response = await api.post('users', {
-            name: clientData.name,
-            email: clientData.email,
-            password: clientData.password
-        })
 
-        
+        try {
+            const { status } = await api.post('users', {
+                name: clientData.name,
+                email: clientData.email,
+                password: clientData.password
+            },
+                { validateStatus: () => true }
+            )
+
+            if (status === 200 || status === 2001) {
+                toast.success('Cadastro Criado Com Sucesso')
+            } else if (status === 409) {
+
+                toast.success('Email Já Cadastrado! Por Favor Faça o Login')
+            } else {
+                throw new Error()
+            }
+
+        } catch (err) {
+            toast.error('Falha no sistema! Tente novamente ')
+        }
     }
 
     return (
@@ -62,15 +78,15 @@ function Register() {
                     <Label error={errors.name?.message} >Nome</Label>
                     <Input type="text" {...register('name')} error={errors.name?.message} />
                     <ErrorsMessage>{errors.name?.message}</ErrorsMessage>
-                    
+
                     <Label error={errors.email?.message}>Email</Label>
                     <Input type="email" {...register('email')} error={errors.email?.message} />
                     <ErrorsMessage>{errors.email?.message}</ErrorsMessage>
-                    
+
                     <Label error={errors.password?.message}>Senha</Label>
                     <Input type="password" {...register('password')} error={errors.password?.message} />
-                    <ErrorsMessage>{errors.password?.message}</ErrorsMessage> 
-                    
+                    <ErrorsMessage>{errors.password?.message}</ErrorsMessage>
+
                     <Label error={errors.confirmPassword?.message}>Confirme senha </Label>
                     <Input type="password" {...register('confirmPassword')} error={errors.password?.message} />
                     <ErrorsMessage>{errors.confirmPassword?.message}</ErrorsMessage>
