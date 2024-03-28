@@ -11,7 +11,7 @@ justify-content: center;
 align-items: center;
 `
 
-export const LoginImage = styled.img`
+export const RegisterImage = styled.img`
 
 height: 70%;
 
@@ -38,7 +38,7 @@ h1{
     line-height: 28px;
     color: #ffffff;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 10px;
 }
 
 
@@ -60,7 +60,7 @@ font-style: normal;
     font-size: 12px;
     line-height: 14px;
     color: #ffffff;
-    margin-top: 28px;
+    margin-top: ${props => (props.error ? '12px' : '28px')}; 
     margin-bottom: 5px;
 
 `

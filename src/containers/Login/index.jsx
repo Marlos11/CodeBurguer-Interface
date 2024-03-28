@@ -7,9 +7,10 @@ import * as Yup from 'yup'
 import LoginImg from '../../assets/img-login.svg'
 import LogoImg from '../../assets/logo.svg'
 
+import Button from "../../components/Button";
 import {
     LoginImage,
-    Button,
+
     Conteiner,
     ConteinerItens,
     Input,
@@ -37,8 +38,8 @@ function Login() {
             email: clientData.email,
             password: clientData.password
         })
-        
-        console.log(response)
+
+      
     }
 
     return (
@@ -57,7 +58,8 @@ function Login() {
                     <Input type="password" {...register("password")} error={errors.password?.message} />
                     <ErrorsMessage>{errors.password?.message}</ErrorsMessage>
 
-                    <Button>SingIn</Button>
+                    <Button type="submit" style={{ marginTop:75, marginBottom:25 }}>SingIn</Button>
+
                 </form>
                 <SingInLink>
                     Não possui conta? <a>SingUp</a>
