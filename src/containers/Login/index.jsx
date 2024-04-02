@@ -25,9 +25,9 @@ import {
 
 function Login() {
 
-    const users = useUser()
-
-    console.log(users)
+    const { putUserData, userData } = useUser()
+    console.log(userData)
+   
     const schema = Yup.object().shape({
         email: Yup.string().email('email invalido').required('Obrigatorio preencher o campo email '),
         password: Yup.string().required('Obrigatorio preencher o campo de senha ').min(6, 'a senha deve conter no minimo 6 digitos')
@@ -40,7 +40,7 @@ function Login() {
         resolver: yupResolver(schema)
     })
     const onSubmit = async clientData => {
-        const response = await toast.promise(
+        const {data} = await toast.promise(
 
             api.post('sessions', {
                 email: clientData.email,
@@ -52,13 +52,11 @@ function Login() {
                 success: 'Seja Bem Vindo(a)! ',
                 error: 'Verifique suas informações'
             }
+            )
+            putUserData(data)
+           
 
-        )
 
-
-
-
-        console.log(response)
     }
 
     return (
