@@ -3,6 +3,7 @@ import React from "react";
 import { useForm, } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { toast } from 'react-toastify'
+import { useUser } from '../../hooks/UserContext'
 import api from '../../services/api'
 import * as Yup from 'yup'
 import LoginImg from '../../assets/img-login.svg'
@@ -23,6 +24,10 @@ import {
 
 
 function Login() {
+
+    const users = useUser()
+
+    console.log(users)
     const schema = Yup.object().shape({
         email: Yup.string().email('email invalido').required('Obrigatorio preencher o campo email '),
         password: Yup.string().required('Obrigatorio preencher o campo de senha ').min(6, 'a senha deve conter no minimo 6 digitos')
@@ -46,7 +51,7 @@ function Login() {
                 pending: 'Verificando informações',
                 success: 'Seja Bem Vindo(a)! ',
                 error: 'Verifique suas informações'
-              }
+            }
 
         )
 

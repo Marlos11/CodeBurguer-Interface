@@ -53,7 +53,7 @@ function Register() {
                 { validateStatus: () => true }
             )
 
-            if (status === 200 || status === 2001) {
+            if (status === 200 || status === 201) {
                 toast.success('Cadastro Criado Com Sucesso')
             } else if (status === 409) {
 
