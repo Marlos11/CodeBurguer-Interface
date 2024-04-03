@@ -77,10 +77,10 @@ function Login() {
 
                     <Button type="submit" style={{ marginTop: 75, marginBottom: 25 }}>SingIn</Button>
 
-                </form>
                 <SingInLink>
                     Não possui conta? <a>SingUp</a>
                 </SingInLink>
+                </form>
             </ConteinerItens>
         </Conteiner>
     )

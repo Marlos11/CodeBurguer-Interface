@@ -9,18 +9,20 @@ background-image: url(${Background});
 display: flex;
 justify-content: center;
 align-items: center;
+
+
 `
 
 export const LoginImage = styled.img`
 
-height: 70%;
+height: 85%;
 
 `
 
 export const ConteinerItens = styled.div`
 background: #373737;
 border-radius: 0 10px 10px 0 ;
-height: 70%;
+height: 85%;
 padding: 25px 75px ;
 display: flex;
 justify-content: center;
