@@ -3,6 +3,7 @@ import React from "react";
 import { useForm, } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { toast } from 'react-toastify'
+import { Link } from "react-router-dom";
 import { useUser } from '../../hooks/UserContext'
 import api from '../../services/api'
 import * as Yup from 'yup'
@@ -27,7 +28,7 @@ function Login() {
 
     const { putUserData, userData } = useUser()
     console.log(userData)
-   
+
     const schema = Yup.object().shape({
         email: Yup.string().email('email invalido').required('Obrigatorio preencher o campo email '),
         password: Yup.string().required('Obrigatorio preencher o campo de senha ').min(6, 'a senha deve conter no minimo 6 digitos')
@@ -40,7 +41,7 @@ function Login() {
         resolver: yupResolver(schema)
     })
     const onSubmit = async clientData => {
-        const {data} = await toast.promise(
+        const { data } = await toast.promise(
 
             api.post('sessions', {
                 email: clientData.email,
@@ -52,9 +53,9 @@ function Login() {
                 success: 'Seja Bem Vindo(a)! ',
                 error: 'Verifique suas informações'
             }
-            )
-            putUserData(data)
-           
+        )
+        putUserData(data)
+
 
 
     }
@@ -77,9 +78,9 @@ function Login() {
 
                     <Button type="submit" style={{ marginTop: 75, marginBottom: 25 }}>SingIn</Button>
 
-                <SingInLink>
-                    Não possui conta? <a>SingUp</a>
-                </SingInLink>
+                    <SingInLink>
+                        Não possui conta? <Link to="/cadastro" style={{ color: 'white' }}>SingUp</Link>
+                    </SingInLink>
                 </form>
             </ConteinerItens>
         </Conteiner>

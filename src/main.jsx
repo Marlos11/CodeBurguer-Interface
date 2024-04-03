@@ -1,8 +1,8 @@
 import React from 'react'
 import { ToastContainer } from 'react-toastify';
-import {UserProvider} from './hooks/UserContext'
-import Login from './containers/Login'
-import Register from './containers/Register'
+import { UserProvider } from './hooks/UserContext'
+import Myroutes from './routes/routes';
+
 import ReactDOM from 'react-dom/client'
 import Globalstyles from './styles/Globalstyles'
 
@@ -11,12 +11,12 @@ import Globalstyles from './styles/Globalstyles'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-{/*   {   <Register /> } */}
+
     <UserProvider>
-    <Login/> 
-      
+      <Myroutes />
+
     </UserProvider>
     <ToastContainer theme='colored' />
-    <Globalstyles/>
+    <Globalstyles />
   </React.StrictMode>,
 )
