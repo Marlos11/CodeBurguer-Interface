@@ -4,6 +4,7 @@ import { useForm, } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { toast } from 'react-toastify'
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useUser } from '../../hooks/UserContext'
 import api from '../../services/api'
 import * as Yup from 'yup'
@@ -25,9 +26,10 @@ import {
 
 
 function Login() {
-
-    const { putUserData, userData } = useUser()
-    console.log(userData)
+    
+    const navigation = useNavigate()
+    const { putUserData } = useUser()
+ 
 
     const schema = Yup.object().shape({
         email: Yup.string().email('email invalido').required('Obrigatorio preencher o campo email '),
@@ -55,6 +57,13 @@ function Login() {
             }
         )
         putUserData(data)
+
+        setTimeout(() => {
+
+          navigation('/')
+
+        }, 1000);
+
 
 
 
