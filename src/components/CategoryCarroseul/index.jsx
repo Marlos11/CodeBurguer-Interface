@@ -1,20 +1,20 @@
 import Category from '../../assets/CATEGORIAS.svg'
-import { CategoryImage, Contaiener } from './styles'
+import { ButtonCarousel, CategoryImage, Contaiener, ConteinerItems,Image} from './styles'
 import api from '../../services/api'
 import { useEffect, useState } from 'react'
 import Carousel from 'react-elastic-carousel'
 
 const CategoryCarousel = () => {
 
+
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
 
         async function loadingCategorys() {
-            const { data } = await api.get('categories')
+            const { data } = await api.get('/categories')
 
-            console.log(data)
-           
+
 
             setCategories(data)
         }
@@ -22,24 +22,39 @@ const CategoryCarousel = () => {
         loadingCategorys()
     }, [])
 
+    const breakPoints = [
+        { width: 1, itemsToShow: 1 },
+        { width: 400, itemsToShow: 2 },
+        { width: 600, itemsToShow: 3 },
+        { width: 900, itemsToShow: 4 },
+        { width: 1200, itemsToShow: 5 },
+    ]
+
     return (
         <Contaiener>
 
-            <CategoryImage src={Category} atl="Categoria-logo" />
+            <CategoryImage src={Category} />
 
 
-            <Carousel itemsToShow={4}>
+            <Carousel itemsToShow={4} style={{ width: '90%' }}
+                breakPoints={breakPoints}
+
+            >
+
                 {categories &&
                     categories.map(categories => (
-                        <div key={categories.id}>
-                            <img src={categories.url}alt="foto-categoria" />
-                           <button>{categories.name}</button>
-                        </div>
+                        <ConteinerItems key={categories.id}>
+                            <Image src={categories.url}/>
+                            <ButtonCarousel>{categories.name}</ButtonCarousel>
+                        </ConteinerItems>
 
 
                     ))}
+
+
             </Carousel>
-        </Contaiener>
+
+        </Contaiener >
 
     )
 }

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import { Routes, Route, BrowserRouter as Router, } from "react-router-dom";
 
@@ -6,6 +7,7 @@ import Login from '../containers/Login'
 import Register from '../containers/Register'
 import Home from '../containers/Home'
 import PrivateRoute from "./private-routes";
+import Products from "../containers/Products";
 
 
 
@@ -21,7 +23,8 @@ const MyRoutes = () => {
 
 
               
-                <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
+                <Route path="/" element={<PrivateRoute> <Home /> </PrivateRoute>} />
+                <Route path="produtos" element={<PrivateRoute> <Products/> </PrivateRoute>} />
                 <Route element={<Login />} path="/login" />
                 <Route element={<Register />} path="/cadastro" />
 

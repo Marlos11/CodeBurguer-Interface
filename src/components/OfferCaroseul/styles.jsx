@@ -3,12 +3,13 @@
 import styled from 'styled-components'
 
 export const Contaiener = styled.div`
-background-color:#efefef;
+background-color: #FFFFFF;
 display: flex;
 flex-direction: column;
 align-items: center;
 gap: 35px;
 padding: 35 px 0 ; 
+margin-bottom: 16px;
 
 .rec.rec-arrow{
     background-color: #97588a;
@@ -28,7 +29,10 @@ padding: 35 px 0 ;
 }
 `
 
-export const CategoryImage = styled.img`
+export const OffersImage = styled.img`
+
+margin-top: 16px;
+    
 
 `
 
@@ -36,6 +40,13 @@ export const ConteinerItems = styled.div`
 
     display: flex;
     flex-direction: column;
+
+    p{
+        font-size: 22px;
+font-style: normal;
+font-weight: 700;
+line-height: 120%
+    }
 
 `
 
@@ -45,6 +56,7 @@ export const Image = styled.img`
     height: 120px;
     border-radius: 10px;
     object-fit: cover;
+    margin-bottom: 16px;
     
 `
 

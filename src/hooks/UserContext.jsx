@@ -1,8 +1,10 @@
+// eslint-disable-next-line no-unused-vars
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 
 const UserContext = createContext({})
 
+// eslint-disable-next-line react/prop-types
 export const UserProvider = ({ children }) => {
 
     const [userData, setUserData] = useState({})
@@ -34,6 +36,7 @@ export const UserProvider = ({ children }) => {
     )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useUser = () => {
     const context = useContext(UserContext)
 
