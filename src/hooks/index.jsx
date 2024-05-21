@@ -2,11 +2,16 @@
 import React from "react";
 
 import { UserProvider } from './UserContext'
+import { CartProvider } from "./CartContext";
 
 // eslint-disable-next-line react/prop-types
 const AppProvider = ({ children }) => {
     return (
-        <UserProvider>{children}</UserProvider>
+
+        <CartProvider>
+
+            <UserProvider>{children}</UserProvider>
+        </CartProvider>
     );
 }
 
