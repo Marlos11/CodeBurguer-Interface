@@ -4,7 +4,7 @@ import api from '../../services/api'
 import { useEffect, useState } from 'react'
 import Carousel from 'react-elastic-carousel'
 
-const CategoryCarousel = () => {
+export const CategoryCarousel = () => {
 
 
     const [categories, setCategories] = useState([])
@@ -59,4 +59,3 @@ const CategoryCarousel = () => {
     )
 }
 
-export default CategoryCarousel

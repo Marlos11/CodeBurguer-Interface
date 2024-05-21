@@ -10,7 +10,7 @@ import * as Yup from 'yup'
 import RegisterImg from '../../assets/8 1.svg'
 import LogoImg from '../../assets/logo.svg'
 
-import Button from "../../components/Button";
+import {Button} from "../../components";
 import {
     RegisterImage,
 
@@ -24,7 +24,7 @@ import {
 
 
 
-function Register() {
+export function Register() {
     const schema = Yup.object().shape({
         name: Yup.string().required('O seu nome é obrigatório'),
         email: Yup.string().email('email invalido').
@@ -104,4 +104,3 @@ function Register() {
     )
 }
 
-export default Register

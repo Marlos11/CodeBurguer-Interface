@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react";
-import Button from '../Button'
+import {Button} from '../Button'
 
 
 import { Conteiner, Image, ProductName, ProductPrice } from "./styles";
 import formatCurrency from "../../utils/formatCurrency";
 
-const CardProducts = ({ product }) => {
+export const CardProducts = ({ product }) => {
     console.log(product)
     return (
         <Conteiner >
@@ -21,6 +21,6 @@ const CardProducts = ({ product }) => {
         </Conteiner>
     )
 }
-export default CardProducts
+
 
 

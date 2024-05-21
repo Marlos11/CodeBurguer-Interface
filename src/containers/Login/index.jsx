@@ -12,7 +12,7 @@ import * as Yup from 'yup'
 import LoginImg from '../../assets/img-login.svg'
 import LogoImg from '../../assets/logo.svg'
 
-import Button from "../../components/Button";
+import {Button} from "../../components";
 import {
     LoginImage,
 
@@ -26,7 +26,7 @@ import {
 
 
 
-function Login() {
+export function Login() {
     
     const navigation = useNavigate()
     const { putUserData } = useUser()
@@ -97,4 +97,3 @@ function Login() {
     )
 }
 
-export default Login
