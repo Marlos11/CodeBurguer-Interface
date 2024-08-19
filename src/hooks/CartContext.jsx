@@ -10,6 +10,10 @@ export const CartProvider = ({ children }) => {
 
     const [cartProducts, setCartProducts] = useState([])
 
+    const updateLocalStorage = async product => {
+        localStorage.setItem('codeburguer:cartInfo', JSON.stringify(product))
+    }
+
 
     const putProductsInCat = async product => {
         console.log(product)
@@ -30,7 +34,7 @@ export const CartProvider = ({ children }) => {
 
         }
 
-        await localStorage.setItem('codeburguer:cartInfo', JSON.stringify(newCartProducts))
+        await updateLocalStorage(newCartProducts)
     }
 
 
@@ -38,7 +42,7 @@ export const CartProvider = ({ children }) => {
         const newCart = cartProducts.filter(product => product.id != productId)
 
         setCartProducts(newCart)
-        await localStorage.setItem('codeburguer:cartInfo', JSON.stringify(newCart))
+        await updateLocalStorage(newCart)
 
     }
 
@@ -51,7 +55,7 @@ export const CartProvider = ({ children }) => {
 
         setCartProducts(newCart)
 
-        await localStorage.setItem('codeburguer:cartInfo', JSON.stringify(newCart))
+        await updateLocalStorage(newCart)
     }
 
 
@@ -70,8 +74,8 @@ export const CartProvider = ({ children }) => {
             })
             setCartProducts(newCart)
 
-            await localStorage.setItem('codeburguer:cartInfo', JSON.stringify(newCart))
-        }else{
+            await updateLocalStorage(newCart)
+        } else {
             deleteProducts(productId)
         }
 
