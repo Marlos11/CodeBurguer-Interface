@@ -2,8 +2,9 @@
 import React from "react"
 
 import { Container } from "./styles"
+import { Button } from '../Button'
 
- 
+
 
 
 
@@ -11,13 +12,28 @@ import { Container } from "./styles"
 export const CartResume = () => {
 
 
-    return (
-        <Container>
+  return (
+    <div>
+      <Container>
+        <div className="container-top">
+          <h2 className="title">Resumo Do Pedido </h2>
+          <p className="items">Itens</p>
+          <p className="items-price">R$ 10,00</p>
+          <p className="delivery-taxa">Taxa De Entrega </p>
+          <p className="delivery-price">R$ 10,00</p>
+        </div>
 
-           
-          <p> Olá </p>
-          
-        </Container>
-    )
+        <div className="container-bottom">
+          <p>Total</p>
+          <p>R$:20,00 </p>
+        </div>
+
+      </Container>
+
+      <Button style={{ with: '100%', marginTop: 30 }}>
+        Finalizar Pedido
+      </Button>
+    </div>
+  )
 }
 
