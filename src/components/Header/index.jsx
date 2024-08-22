@@ -17,13 +17,13 @@ import {
 
 
 export const Header = () => {
-    const { logout } = useUser()
+    const { logout,userData } = useUser()
     const navigate = useNavigate()
     const location = useLocation()
 
 
     const navigatePath = (path) => {
-        console.log(path)
+       
         if (location.pathname !== path)
             navigate(path)
     }
@@ -58,7 +58,7 @@ export const Header = () => {
                     <img src={User} alt="usuario-logo " />
                 </PageLink>
                 <ContainerText>
-                    <p>Ola,Marlos</p>
+                    <p>Olá,{userData.name}</p>
                     <PagelinkExit onClick={userLogout}>
                         Sair
                     </PagelinkExit>
