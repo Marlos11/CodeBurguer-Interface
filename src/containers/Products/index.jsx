@@ -1,16 +1,24 @@
+/* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import productsLogo from "../../assets/productsBg.svg"
 import { useState, useEffect } from "react";
 import api from '../../services/api'
 import { Conteiner, ProductsImage, CategoryButton, ConteinerCategory, ProductConteiner } from "./styles"
-import {CardProducts} from "../../components";
+import { CardProducts } from "../../components";
+import { useLocation } from "react-router-dom";
 
 
 export const Products = () => {
 
+
+    const {state:{categoryId}} = useLocation()
+   
+
+    
+
     const [menuCategorie, setMenuCategorie] = useState([])
-    const [activecategory, setActiveCategory] = useState(0)
+    const [activecategory, setActiveCategory] = useState(categoryId)
     const [filterProducts, setFilterProducts] = useState([])
     const [products, setProducts] = useState([])
 
