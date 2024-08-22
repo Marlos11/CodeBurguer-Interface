@@ -1,6 +1,7 @@
 
 
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Contaiener = styled.div`
 background-color:#efefef;
@@ -48,7 +49,7 @@ export const Image = styled.img`
     
 `
 
-export const ButtonCarousel = styled.button`
+export const ButtonCarousel = styled(Link)`
     margin-top: 10px;
     background: #9758a6;
     box-shadow: 0px 5px 10px rgba(151,88,166,0.22),0px 20px 40px rgba(151,88,166,0.24);
@@ -67,5 +68,10 @@ export const ButtonCarousel = styled.button`
     }
     &:active{
         opacity: 0.8;
-    }
+    } 
+
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `

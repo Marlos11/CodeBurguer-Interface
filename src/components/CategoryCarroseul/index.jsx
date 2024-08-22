@@ -1,12 +1,15 @@
 import Category from '../../assets/CATEGORIAS.svg'
-import { ButtonCarousel, CategoryImage, Contaiener, ConteinerItems,Image} from './styles'
+import { ButtonCarousel, CategoryImage, Contaiener, ConteinerItems, Image } from './styles'
 import api from '../../services/api'
 import { useEffect, useState } from 'react'
 import Carousel from 'react-elastic-carousel'
+/* import { useLocation } from 'react-router-dom' */
+
+
 
 export const CategoryCarousel = () => {
 
-
+  /*   let {state} = useLocation */
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
@@ -42,10 +45,11 @@ export const CategoryCarousel = () => {
             >
 
                 {categories &&
-                    categories.map(categories => (
-                        <ConteinerItems key={categories.id}>
-                            <Image src={categories.url}/>
-                            <ButtonCarousel>{categories.name}</ButtonCarousel>
+                    categories.map(category => (
+                        <ConteinerItems key={category.id}>
+                            <Image src={category.url} />
+                            <ButtonCarousel to={{pathname:'/produtos'}} state={{categoryId:category.id}}
+                            >{category.name}</ButtonCarousel>
                         </ConteinerItems>
 
 
