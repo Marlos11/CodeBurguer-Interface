@@ -2,7 +2,7 @@
 import React from "react"
 import HomeLogo from '../../assets/burger.svg'
 import { Container, HomeImg } from "./styles"
-import { CategoryCarousel, OfferCarousel } from "../../components/"
+import { CategoryCarousel, OfferCarousel,/* Header */ } from "../../components/"
 
 
 
@@ -13,8 +13,8 @@ export const Home = () => {
 
     return (
         <Container>
-
-            <HomeImg src={HomeLogo} alt="home-logo" />
+{/*             <Header/>
+ */}            <HomeImg src={HomeLogo} alt="home-logo" />
             <CategoryCarousel />
             <OfferCarousel />
         </Container>
