@@ -11,7 +11,7 @@ import formatCurrency from "../../utils/formatCurrency"
 export const CartItems = () => {
 
     const { cartProducts,incraseProducts,decreaseProducts} = useCart()
-    console.log(cartProducts)
+   
 
 
     return (
