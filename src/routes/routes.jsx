@@ -3,8 +3,9 @@ import React from "react";
 import { Routes, Route, BrowserRouter as Router, } from "react-router-dom";
 
 
-import { Login, Home, Register, Products,Cart } from '../containers'
+import { Login, Home, Register, Products, Cart } from '../containers'
 import PrivateRoute from "./private-routes";
+import { Admin } from "../containers/Admin";
 
 
 
@@ -20,11 +21,18 @@ const MyRoutes = () => {
 
 
 
-                <Route path="/" element={<PrivateRoute> <Home /> </PrivateRoute>} />
-                <Route path="produtos" element={<PrivateRoute> <Products /> </PrivateRoute>} />
+
+
+
                 <Route element={<Login />} path="/login" />
                 <Route element={<Register />} path="/cadastro" />
-                <Route element={<Cart />} path="/carrinho" />
+
+                <Route path="/" element={<PrivateRoute> <Home /> </PrivateRoute>} />
+                <Route path="/produtos" element={<PrivateRoute> <Products /> </PrivateRoute>} />
+                <Route path="/carrinho" element={<PrivateRoute> <Cart /> </PrivateRoute>} />
+                <Route path="/pedidos" element={<PrivateRoute isAdmin> <Admin /> </PrivateRoute>}  />
+
+
 
             </Routes>
         </Router>
