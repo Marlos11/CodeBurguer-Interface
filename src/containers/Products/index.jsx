@@ -9,23 +9,28 @@ import { CardProducts } from "../../components";
 import { useLocation } from "react-router-dom";
 
 
-export const Products = () => {
+export const Products = (props) => {
+    console.log('props aqui', props)
+
+    const location = useLocation()
 
 
-    const {state:{categoryId}} = useLocation()
-   
+    let category = 0
 
-    
+    if (location.state) {
+        category = location.state.categoryId
+    }
 
-    const [menuCategorie, setMenuCategorie] = useState([])
-    const [activecategory, setActiveCategory] = useState(categoryId)
+
+    const [menucategory, setMenucategory] = useState([])
+    const [activecategory, setActiveCategory] = useState(category)
     const [filterProducts, setFilterProducts] = useState([])
     const [products, setProducts] = useState([])
 
     useEffect(() => {
 
         async function loadingCategorys() {
-            const { data } = await api.get('categories')
+            const { data } = await api.get('categorys')
 
             const newCategory = [{
                 id: 0,
@@ -33,7 +38,7 @@ export const Products = () => {
             }, ...data]
 
 
-            setMenuCategorie(newCategory)
+            setMenucategory(newCategory)
         }
 
 
@@ -74,13 +79,13 @@ export const Products = () => {
         <Conteiner>
             <ProductsImage src={productsLogo} alt="" />
             <ConteinerCategory>
-                {menuCategorie &&
-                    menuCategorie.map((categorie =>
+                {menucategory &&
+                    menucategory.map((category =>
                         <CategoryButton
                             type="button"
-                            onClick={() => { setActiveCategory(categorie.id) }}
-                            $isActiveCategory={activecategory === categorie.id}
-                            key={categorie.id}>{categorie.name}
+                            onClick={() => { setActiveCategory(category.id) }}
+                            $isActiveCategory={activecategory === category.id}
+                            key={category.id}>{category.name}
                         </CategoryButton>
 
                     ))}
