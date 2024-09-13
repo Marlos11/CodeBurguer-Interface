@@ -64,6 +64,19 @@ export const Orders = () => {
 
 
   }, [filterOrders])
+  useEffect(() => {
+    if (acvtiveStatus === 1) {
+      setFilterOrders(orders)
+    } else {
+
+
+      const statusIndex = status.findIndex(sts => sts.id === acvtiveStatus)
+      const newFilterOrders = orders.filter(order => order.status === status[statusIndex].value)
+      setFilterOrders(newFilterOrders)
+    } 
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [orders])
 
 
   function handleStatus(status) {
@@ -107,7 +120,11 @@ export const Orders = () => {
           </TableHead>
           <TableBody>
             {rows.map((row) => (
-              <Row key={row.orderId} row={row} />
+              <Row key={row.orderId}
+                row={row}
+                setOrders={setOrders}
+                orders={orders}
+              />
             ))}
           </TableBody>
         </Table>

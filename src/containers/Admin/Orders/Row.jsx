@@ -18,11 +18,11 @@ import Typography from '@mui/material/Typography';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-import { ProductsImg,ReactSelectStyle } from './styles'
+import { ProductsImg, ReactSelectStyle } from './styles'
 import api from '../../../services/api'
 import status from "./orderStatus";
 
-export const Row = ({ row }) => {
+export const Row = ({ row, setOrders, orders }) => {
   const [open, setOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -30,6 +30,12 @@ export const Row = ({ row }) => {
 
     try {
       await api.put(`orders/${id}`, { status })
+      const newOrders = orders.map(order => {
+        return order._id === id ? { ...order, status } : order
+      })
+
+      setOrders(newOrders)
+
     } catch (err) {
       console.error.err
     } finally {
@@ -58,7 +64,9 @@ export const Row = ({ row }) => {
         <TableCell >{row.date}</TableCell>
         <TableCell >
           <ReactSelectStyle
-            options={status}
+
+            options={status.filter(sts => sts.value !== 'Todos')}
+            menuPortalTarget={document.body}
             placeholder='status'
             defaultValue={status.find(option => option.value === row.status || null)}
             onChange={newStatus => {
@@ -109,6 +117,9 @@ export const Row = ({ row }) => {
 }
 
 Row.propTypes = {
+
+  orders: PropTypes.array,
+  setOrders: PropTypes.func,
   row: PropTypes.shape({
     name: PropTypes.string.isRequired,
     orderId: PropTypes.string.isRequired,
