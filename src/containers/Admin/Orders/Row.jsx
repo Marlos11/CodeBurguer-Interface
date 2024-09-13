@@ -1,6 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react"
-/* import api from '../../../services/api' */
+
+
+
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
@@ -16,11 +18,27 @@ import Typography from '@mui/material/Typography';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-import { ProductsImg } from './styles'
+import { ProductsImg,ReactSelectStyle } from './styles'
+import api from '../../../services/api'
+import status from "./orderStatus";
+
+export const Row = ({ row }) => {
+  const [open, setOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+
+  async function setNewStatus(id, status) {
+
+    try {
+      await api.put(`orders/${id}`, { status })
+    } catch (err) {
+      console.error.err
+    } finally {
+      setIsLoading(false)
+    }
+
+  }
 
 
-export const Row = ({row}) => {
-const [open,setOpen] = useState(false)
   return (
     <React.Fragment>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -38,7 +56,17 @@ const [open,setOpen] = useState(false)
         </TableCell>
         <TableCell >{row.name}</TableCell>
         <TableCell >{row.date}</TableCell>
-        <TableCell >{row.status}</TableCell>
+        <TableCell >
+          <ReactSelectStyle
+            options={status}
+            placeholder='status'
+            defaultValue={status.find(option => option.value === row.status || null)}
+            onChange={newStatus => {
+              setNewStatus(row.orderId, newStatus.value)
+            }}
+            isLoading={isLoading}
+          />
+        </TableCell>
         <TableCell ></TableCell>
       </TableRow>
       <TableRow>
@@ -66,7 +94,7 @@ const [open,setOpen] = useState(false)
                       <TableCell>{productRow.name}</TableCell>
                       <TableCell >{productRow.category}</TableCell>
                       <TableCell >
-                       <ProductsImg src={productRow.url}alt="imagem-do-produto"/>
+                        <ProductsImg src={productRow.url} alt="imagem-do-produto" />
                       </TableCell>
                     </TableRow>
                   ))}
@@ -86,7 +114,7 @@ Row.propTypes = {
     orderId: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
-   
+
     products: PropTypes.arrayOf(
       PropTypes.shape({
         quantity: PropTypes.number.isRequired,
@@ -95,14 +123,14 @@ Row.propTypes = {
         url: PropTypes.string.isRequired,
       }),
     ).isRequired,
-  
+
   }).isRequired,
 };
 
 
-  
 
-    
+
+
 
 
 export default Row
