@@ -23,6 +23,7 @@ export const Orders = () => {
 
   const [orders, setOrders] = useState([])
   const [filterOrders, setFilterOrders] = useState([])
+  const [acvtiveStatus, setActiveStatus] = useState(1)
   const [rows, setRows] = useState([])
 
   console.log(orders)
@@ -74,6 +75,8 @@ export const Orders = () => {
       const newOrders = orders.filter(order => order.status === status.value)
       setFilterOrders(newOrders)
     }
+
+    setActiveStatus(status.id)
   }
 
 
@@ -86,6 +89,7 @@ export const Orders = () => {
           status.map(status =>
             <LinkMenu key={status.id}
               onClick={() => handleStatus(status)}
+              isActiveStatus={acvtiveStatus === status.id}
             > {status.label}</LinkMenu>)}
       </Menu>
 
