@@ -31,6 +31,7 @@ const MyRoutes = () => {
                 <Route path="/produtos" element={<PrivateRoute> <Products /> </PrivateRoute>} />
                 <Route path="/carrinho" element={<PrivateRoute> <Cart /> </PrivateRoute>} />
                 <Route path="/pedidos" element={<PrivateRoute isAdmin> <Admin /> </PrivateRoute>}  />
+                <Route path="/listar-produtos" element={<PrivateRoute isAdmin> <Admin /> </PrivateRoute>}  />
 
 
 
