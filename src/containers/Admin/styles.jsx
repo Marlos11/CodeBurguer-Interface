@@ -8,3 +8,8 @@ min-height: 100vh;
 width: 100vw;
 background-color: #efefef;
 `
+
+export const ContainerItems = styled.div`
+padding: 20px;
+
+`

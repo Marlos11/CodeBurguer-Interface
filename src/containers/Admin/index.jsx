@@ -2,21 +2,25 @@
 import React from "react"
 /* import Orders from "./Orders"
  */
-import { Container } from './styles'
+import { Container,ContainerItems } from './styles'
 import { SideMenuAdmin } from "../../components"
 import ListProducts from "./List-Products"
 
 
 export const Admin = () => {
-    
-    
-    
-    
+
+
+
+
     return (
         <Container>
-           <SideMenuAdmin/>
-           <ListProducts/>
-{/*         <Orders/>
- */}        </Container>
+            <SideMenuAdmin />
+            <ContainerItems>
+
+                <ListProducts />
+                {/*         <Orders/>
+ */}
+            </ContainerItems>
+        </Container>
     )
 }
