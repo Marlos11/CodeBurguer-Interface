@@ -6,6 +6,7 @@ import { Routes, Route, BrowserRouter as Router, } from "react-router-dom";
 import { Login, Home, Register, Products, Cart } from '../containers'
 import PrivateRoute from "./private-routes";
 import { Admin } from "../containers/Admin";
+import paths from "../constants/paths";
 
 
 
@@ -30,8 +31,8 @@ const MyRoutes = () => {
                 <Route path="/" element={<PrivateRoute> <Home /> </PrivateRoute>} />
                 <Route path="/produtos" element={<PrivateRoute> <Products /> </PrivateRoute>} />
                 <Route path="/carrinho" element={<PrivateRoute> <Cart /> </PrivateRoute>} />
-                <Route path="/pedidos" element={<PrivateRoute isAdmin> <Admin /> </PrivateRoute>}  />
-                <Route path="/listar-produtos" element={<PrivateRoute isAdmin> <Admin /> </PrivateRoute>}  />
+                <Route path={paths.Order} element={<PrivateRoute isAdmin> <Admin /> </PrivateRoute>}  />
+                <Route path={paths.ProductsList} element={<PrivateRoute isAdmin> <Admin /> </PrivateRoute>}  />
 
 
 
