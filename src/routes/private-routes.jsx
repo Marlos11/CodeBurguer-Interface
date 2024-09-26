@@ -6,6 +6,7 @@ import { Header } from "../components/Header";
 
 // eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ children,isAdmin }) => {
+  
 
     const user = localStorage.getItem("codeburger:userData")
 

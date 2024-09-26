@@ -58,7 +58,7 @@ export function Login() {
             }
         )
         putUserData(data)
-        console.log(data)
+       
 
         setTimeout(() => {
 

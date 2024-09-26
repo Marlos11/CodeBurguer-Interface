@@ -33,6 +33,7 @@ const MyRoutes = () => {
                 <Route path="/carrinho" element={<PrivateRoute> <Cart /> </PrivateRoute>} />
                 <Route path={paths.Order} element={<PrivateRoute isAdmin> <Admin /> </PrivateRoute>}  />
                 <Route path={paths.ProductsList} element={<PrivateRoute isAdmin> <Admin /> </PrivateRoute>}  />
+                <Route path={paths.NewProduct} element={<PrivateRoute isAdmin> <Admin /> </PrivateRoute>}  />
 
 
 

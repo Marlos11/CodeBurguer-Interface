@@ -26,7 +26,7 @@ export const Orders = () => {
   const [acvtiveStatus, setActiveStatus] = useState(1)
   const [rows, setRows] = useState([])
 
-  console.log(orders)
+ 
   useEffect(() => {
 
     async function loadingOrders() {
