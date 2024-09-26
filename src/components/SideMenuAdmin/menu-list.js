@@ -1,6 +1,7 @@
 
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import paths from '../../constants/paths';
 const linkList = [
     {
@@ -15,6 +16,12 @@ const linkList = [
         label:'Listar-Produtos',
         link:paths.ProductsList,
         icon:ShoppingCartIcon
+    },
+    {
+        id:3,
+        label:'Listar-Produtos',
+        link:paths.NewProduct,
+        icon:AddShoppingCartIcon
     }
 ]
 

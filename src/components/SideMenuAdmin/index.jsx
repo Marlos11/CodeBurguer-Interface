@@ -7,14 +7,15 @@ import linkList from "./menu-list"
 
 import { Container, ItemContainer, ListLink } from "./styles"
 
-export const SideMenuAdmin = () => {
+// eslint-disable-next-line react/prop-types
+export const SideMenuAdmin = ({pathname}) => {
 
     const { logout } = useUser()
     return (
         <Container>
             <hr></hr>
             {linkList.map(item => (
-                <ItemContainer key={item.id} isActive={true} >
+                <ItemContainer key={item.id} isActive={pathname === item.link} >
                     <item.icon className="icon" />
                     <ListLink to={item.link}>{item.label}</ListLink>
                 </ItemContainer>
