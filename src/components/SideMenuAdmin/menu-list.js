@@ -19,7 +19,7 @@ const linkList = [
     },
     {
         id:3,
-        label:'Listar-Produtos',
+        label:'Adicionar-Produto',
         link:paths.NewProduct,
         icon:AddShoppingCartIcon
     }

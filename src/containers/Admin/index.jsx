@@ -1,25 +1,33 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react"
-/* import Orders from "./Orders"
- */
-import { Container,ContainerItems } from './styles'
+import Orders from "./Orders"
+
+import { Container, ContainerItems } from './styles'
 import { SideMenuAdmin } from "../../components"
 import ListProducts from "./List-Products"
+import { useLocation } from "react-router-dom"
+import paths from "../../constants/paths"
+import NewProduct from "./New-Product"
 
 
 export const Admin = () => {
+
+    const { pathname } = useLocation()
+
 
 
 
 
     return (
         <Container>
-            <SideMenuAdmin />
+            <SideMenuAdmin  pathname={pathname}/>
             <ContainerItems>
+                {pathname === paths.ProductsList && <ListProducts />}
 
-                <ListProducts />
-                {/*         <Orders/>
- */}
+                {pathname === paths.Order && <Orders />}
+                {pathname === paths.NewProduct && <NewProduct />}
+
+
             </ContainerItems>
         </Container>
     )
