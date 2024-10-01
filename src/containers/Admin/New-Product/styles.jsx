@@ -16,6 +16,9 @@ form{
     background-color: #565656;
     border-radius: 10px;
     padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
 `
@@ -35,7 +38,9 @@ border-radius: 8px;
 box-shadow: 0px 4px 14px rgba(0,0,0,0.1) ;
 background: #ffffff;
 border: none;
-margin-bottom: 25px;
+padding-left: 10px;
+
+
 min-width: 280px;
 
 
@@ -55,7 +60,7 @@ align-items: center;
 border: 1px dashed #ffffff;
 border-radius: 5px;
 padding: 10px;
-margin-bottom: 20px;
+
 gap: 10px;
 input{
     opacity: 0;
