@@ -10,7 +10,7 @@ import * as Yup from 'yup'
 import RegisterImg from '../../assets/8 1.svg'
 import LogoImg from '../../assets/logo.svg'
 
-import {Button} from "../../components";
+import {Button,ErrorMessage} from "../../components";
 import {
     RegisterImage,
 
@@ -19,7 +19,7 @@ import {
     Input,
     SingInLink,
     Label,
-    ErrorsMessage
+  
 } from "./styles";
 
 
@@ -79,19 +79,19 @@ export function Register() {
                 <form noValidate onSubmit={handleSubmit(onSubmit)}>
                     <Label error={errors.name?.message} >Nome</Label>
                     <Input type="text" {...register('name')} error={errors.name?.message} />
-                    <ErrorsMessage>{errors.name?.message}</ErrorsMessage>
+                    <ErrorMessage>{errors.name?.message}</ErrorMessage>
 
                     <Label error={errors.email?.message}>Email</Label>
                     <Input type="email" {...register('email')} error={errors.email?.message} />
-                    <ErrorsMessage>{errors.email?.message}</ErrorsMessage>
+                    <ErrorMessage>{errors.email?.message}</ErrorMessage>
 
                     <Label error={errors.password?.message}>Senha</Label>
                     <Input type="password" {...register('password')} error={errors.password?.message} />
-                    <ErrorsMessage>{errors.password?.message}</ErrorsMessage>
+                    <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
                     <Label error={errors.confirmPassword?.message}>Confirme senha </Label>
                     <Input type="password" {...register('confirmPassword')} error={errors.password?.message} />
-                    <ErrorsMessage>{errors.confirmPassword?.message}</ErrorsMessage>
+                    <ErrorMessage>{errors.confirmPassword?.message}</ErrorMessage>
 
                     <Button type="submit" style={{ marginTop: 25, marginBottom: 25 }}>Sing Up</Button>
 

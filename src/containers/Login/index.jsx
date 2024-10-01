@@ -12,7 +12,7 @@ import * as Yup from 'yup'
 import LoginImg from '../../assets/img-login.svg'
 import LogoImg from '../../assets/logo.svg'
 
-import {Button} from "../../components";
+import {Button,ErrorMessage} from "../../components";
 import {
     LoginImage,
 
@@ -21,7 +21,7 @@ import {
     Input,
     SingInLink,
     Label,
-    ErrorsMessage
+   
 } from "./styles";
 
 
@@ -86,11 +86,11 @@ export function Login() {
                 <form noValidate onSubmit={handleSubmit(onSubmit)}>
                     <Label>Email</Label>
                     <Input type="email" {...register('email')} error={errors.email?.message} />
-                    <ErrorsMessage>{errors.email?.message}</ErrorsMessage>
+                    <ErrorMessage>{errors.email?.message}</ErrorMessage>
 
                     <Label>Senha</Label>
                     <Input type="password" {...register("password")} error={errors.password?.message} />
-                    <ErrorsMessage>{errors.password?.message}</ErrorsMessage>
+                    <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
                     <Button type="submit" style={{ marginTop: 75, marginBottom: 25 }}>SingIn</Button>
 
