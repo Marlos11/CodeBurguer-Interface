@@ -13,8 +13,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import CheckIcon from '@mui/icons-material/Check';
 import CancelIcon from '@mui/icons-material/Cancel';
-
-
+import { useNavigate } from "react-router-dom";
+import paths from '../../../constants/paths'
 
 import { Container, Img ,InconEdit} from "./styles";
 
@@ -22,6 +22,9 @@ import { Container, Img ,InconEdit} from "./styles";
 const ListProducts = () => {
 
     const [products, setProducts] = useState([])
+
+    
+    const navigation = useNavigate()
 
     useEffect(() => {
         async function loadProducts() {
@@ -39,6 +42,12 @@ const ListProducts = () => {
         return <CancelIcon style={{color:'#cc1717'}} />
     }
 
+
+    const editProduct = (product)=>{
+       
+         navigation(paths.EditProduct, {state:{product}}) 
+
+    }
     return (
         <Container>
             <TableContainer component={Paper}>
@@ -64,7 +73,7 @@ const ListProducts = () => {
                                 <TableCell>{formatCurrency(product.price)}</TableCell>
                                 <TableCell align="center"> {isOffer(product.offer)}</TableCell>
                                 <TableCell align="center"><Img src={product.url} alt="imagem-produto" /></TableCell>
-                                <TableCell><InconEdit>Editar</InconEdit></TableCell>
+                                <TableCell><InconEdit onClick={()=>editProduct(product)}>Editar</InconEdit></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

@@ -8,6 +8,7 @@ import ListProducts from "./List-Products"
 import { useLocation } from "react-router-dom"
 import paths from "../../constants/paths"
 import NewProduct from "./New-Product"
+import EditProduct from "./Edit-Product"
 
 
 export const Admin = () => {
@@ -26,6 +27,7 @@ export const Admin = () => {
 
                 {pathname === paths.Order && <Orders />}
                 {pathname === paths.NewProduct && <NewProduct />}
+                {pathname === paths.EditProduct && <EditProduct />}
 
 
             </ContainerItems>
