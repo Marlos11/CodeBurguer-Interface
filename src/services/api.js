@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const apiCodeBurguer = axios.create({
 
-    baseURL: 'codeburguerapi-production-89b1.up.railway.app'
+    baseURL: 'https://codeburguerapi-production-89b1.up.railway.app'
 
 })
 
